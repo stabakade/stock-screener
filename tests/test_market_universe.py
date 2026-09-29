@@ -13,7 +13,7 @@ def test_market_factory_selects_market_fetcher(tmp_path):
 
 def test_nse_universe_formats_yahoo_symbols_and_keeps_eq_series(monkeypatch, tmp_path):
     csv_data = (
-        'SYMBOL,NAME OF COMPANY,SERIES\n'
+        'SYMBOL,NAME OF COMPANY, SERIES\n'
         'RELIANCE,Reliance Industries Limited, EQ\n'
         'M&M, Mahindra & Mahindra Limited,EQ\n'
         'ILLQ, Illiquid Example Limited,BE\n'

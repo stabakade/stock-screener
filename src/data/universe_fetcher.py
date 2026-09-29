@@ -247,6 +247,7 @@ class NSEStockUniverseFetcher:
         )
         response.raise_for_status()
         stocks = pd.read_csv(BytesIO(response.content))
+        stocks.columns = stocks.columns.str.strip().str.upper()
         required_columns = {'SYMBOL', 'NAME OF COMPANY', 'SERIES'}
         missing_columns = required_columns - set(stocks.columns)
         if missing_columns:

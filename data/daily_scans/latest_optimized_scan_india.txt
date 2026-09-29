@@ -1,0 +1,558 @@
+================================================================================
+OPTIMIZED FULL MARKET SCAN - NSE India STOCKS
+Scan Date: 2026-09-29
+Generated: 2026-09-29 01:59:52
+================================================================================
+
+SCANNING STATISTICS
+--------------------------------------------------------------------------------
+Total Universe: 2,320 stocks
+Analyzed: 1,103 stocks
+Processing Time: 38.7 minutes
+Actual TPS: 1.00
+🟡 Error Rate: 2.54%
+Buy Signals: 0
+🔴 Sell Signals: 154
+
+
+============================================================
+BENCHMARK SUMMARY
+============================================================
+
+🔴 NIFTY 50 Trend Classification:
+  Phase: 4 - Downtrend
+  Trend: Bearish
+  Current Price: ₹23140.50
+  🔴 50 SMA: ₹23994.46 (slope: -0.0508)
+  🔴 200 SMA: ₹24423.17 (slope: -0.0512)
+  🟢 Confidence: 100%
+
+Market Breadth (n=1103):
+  🟡 Phase 1 (Base Building): 808 stocks (73.3%)
+  🟢 Phase 2 (Uptrend): 131 stocks (11.9%)
+  🟡 Phase 3 (Distribution): 1 stocks (0.1%)
+  🔴 Phase 4 (Downtrend): 163 stocks (14.8%)
+  🔴 Breadth Quality: Weak
+
+🔴 Market Regime: RISK-OFF
+
+Interpretation:
+  🔴 Defensive environment - raise cash, tighten stops
+  → Avoid new breakouts, focus on preservation
+============================================================
+
+
+================================================================================
+🟢 TOP BUY SIGNALS (Score >= 70) - 0 Total
+================================================================================
+
+✗ NO BUY SIGNALS TODAY
+
+
+================================================================================
+🔴 TOP SELL SIGNALS (Score >= 60) - 154 Total
+================================================================================
+
+
+################################################################################
+🚨 SELL #1: ALLTIME.NS | Score: 100/110
+################################################################################
+Phase: 4 | 🚨 Severity: CRITICAL
+Breakdown: ₹213.05
+🟡 RS: -0.488
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 7.1%
+  • 50 SMA declining (slope: -0.2909)
+  • High volume breakdown: 3.3x
+  • Weak RS rollover: -0.49
+FUNDAMENTAL SNAPSHOT - ALLTIME.NS
+No data available
+
+################################################################################
+🚨 SELL #2: BANKINDIA.NS | Score: 100/110
+################################################################################
+Phase: 4 | 🚨 Severity: CRITICAL
+Breakdown: ₹141.22
+🟡 RS: -0.202
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 8.0%
+  • 50 SMA declining (slope: -0.0377)
+  • High volume breakdown: 2.3x
+  • Weak RS rollover: -0.20
+FUNDAMENTAL SNAPSHOT - BANKINDIA.NS
+No data available
+
+################################################################################
+🚨 SELL #3: HDFCAMC.NS | Score: 100/110
+################################################################################
+Phase: 4 | 🚨 Severity: CRITICAL
+Breakdown: ₹2508.77
+🟡 RS: -0.091
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 8.2%
+  • 50 SMA declining (slope: -0.2298)
+  • High volume breakdown: 1.5x
+  • Weak RS rollover: -0.09
+FUNDAMENTAL SNAPSHOT - HDFCAMC.NS
+No data available
+
+################################################################################
+🚨 SELL #4: HUBTOWN.NS | Score: 100/110
+################################################################################
+Phase: 4 | 🚨 Severity: CRITICAL
+Breakdown: ₹184.68
+🟡 RS: -0.449
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 9.1%
+  • 50 SMA declining (slope: -0.3048)
+  • High volume breakdown: 2.0x
+  • Weak RS rollover: -0.45
+FUNDAMENTAL SNAPSHOT - HUBTOWN.NS
+No data available
+
+################################################################################
+🚨 SELL #5: INDIAGLYCO.NS | Score: 100/110
+################################################################################
+Phase: 4 | 🚨 Severity: CRITICAL
+Breakdown: ₹809.30
+🟡 RS: -0.171
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 63.2%
+  • 50 SMA declining (slope: -1.6237)
+  • High volume breakdown: 1.7x
+  • Weak RS rollover: -0.17
+FUNDAMENTAL SNAPSHOT - INDIAGLYCO.NS
+No data available
+
+################################################################################
+🚨 SELL #6: HEMIPROP.NS | Score: 90/110
+################################################################################
+Phase: 4 | 🚨 Severity: CRITICAL
+Breakdown: ₹128.98
+🟡 RS: -0.140
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 10.1%
+  • 50 SMA declining (slope: -0.2658)
+  • High volume breakdown: 1.6x
+  • Weak RS rollover: -0.14
+FUNDAMENTAL SNAPSHOT - HEMIPROP.NS
+No data available
+
+################################################################################
+🚨 SELL #7: JIOFIN.NS | Score: 90/110
+################################################################################
+Phase: 4 | 🚨 Severity: CRITICAL
+Breakdown: ₹240.50
+🟡 RS: -0.060
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 8.3%
+  • 50 SMA declining (slope: -0.0623)
+  • High volume breakdown: 1.6x
+  • Weak RS rollover: -0.06
+FUNDAMENTAL SNAPSHOT - JIOFIN.NS
+No data available
+
+################################################################################
+🚨 SELL #8: NATIONALUM.NS | Score: 90/110
+################################################################################
+Phase: 4 | 🚨 Severity: CRITICAL
+Breakdown: ₹369.61
+🟡 RS: -0.256
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 5.6%
+  • High volume breakdown: 1.5x
+  • Weak RS rollover: -0.26
+  • Failed breakout - closed back inside base
+FUNDAMENTAL SNAPSHOT - NATIONALUM.NS
+No data available
+
+################################################################################
+🚨 SELL #9: RCF.NS | Score: 90/110
+################################################################################
+Phase: 4 | 🚨 Severity: CRITICAL
+Breakdown: ₹117.58
+🟡 RS: -0.066
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 6.5%
+  • 50 SMA declining (slope: -0.3230)
+  • High volume breakdown: 1.8x
+  • Weak RS rollover: -0.07
+FUNDAMENTAL SNAPSHOT - RCF.NS
+No data available
+
+################################################################################
+🚨 SELL #10: SBIN.NS | Score: 90/110
+################################################################################
+Phase: 4 | 🚨 Severity: CRITICAL
+Breakdown: ₹1027.93
+🟡 RS: -0.099
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 6.4%
+  • 50 SMA declining (slope: -0.0769)
+  • Elevated volume: 1.4x
+  • Weak RS rollover: -0.10
+FUNDAMENTAL SNAPSHOT - SBIN.NS
+No data available
+
+################################################################################
+🚨 SELL #11: SHARDACROP.NS | Score: 90/110
+################################################################################
+Phase: 4 | 🚨 Severity: CRITICAL
+Breakdown: ₹789.72
+🟡 RS: -0.359
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 7.7%
+  • 50 SMA declining (slope: -0.3166)
+  • Elevated volume: 1.4x
+  • Weak RS rollover: -0.36
+FUNDAMENTAL SNAPSHOT - SHARDACROP.NS
+No data available
+
+################################################################################
+🚨 SELL #12: TMPV.NS | Score: 90/110
+################################################################################
+Phase: 4 | 🚨 Severity: CRITICAL
+Breakdown: ₹319.67
+🟡 RS: -0.237
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 11.9%
+  • 50 SMA declining (slope: -0.2343)
+  • High volume breakdown: 1.5x
+  • Weak RS rollover: -0.24
+FUNDAMENTAL SNAPSHOT - TMPV.NS
+No data available
+
+################################################################################
+🚨 SELL #13: GODFRYPHLP.NS | Score: 85/110
+################################################################################
+Phase: 4 | 🚨 Severity: CRITICAL
+Breakdown: ₹2079.12
+🟢 RS: 0.112
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 7.1%
+  • 50 SMA declining (slope: -0.1293)
+  • High volume breakdown: 1.8x
+  • RS still positive: 0.11
+FUNDAMENTAL SNAPSHOT - GODFRYPHLP.NS
+No data available
+
+################################################################################
+🚨 SELL #14: HINDUNILVR.NS | Score: 85/110
+################################################################################
+Phase: 4 | 🚨 Severity: CRITICAL
+Breakdown: ₹2023.75
+🟢 RS: 0.000
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 6.3%
+  • 50 SMA declining (slope: -0.2076)
+  • High volume breakdown: 1.5x
+  • RS still positive: 0.00
+FUNDAMENTAL SNAPSHOT - HINDUNILVR.NS
+No data available
+
+################################################################################
+🚨 SELL #15: MHRIL.NS | Score: 85/110
+################################################################################
+Phase: 4 | 🚨 Severity: CRITICAL
+Breakdown: ₹212.96
+🟢 RS: 0.103
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 8.0%
+  • 50 SMA declining (slope: -0.3156)
+  • High volume breakdown: 1.7x
+  • RS still positive: 0.10
+FUNDAMENTAL SNAPSHOT - MHRIL.NS
+No data available
+
+################################################################################
+🚨 SELL #16: MUTHOOTFIN.NS | Score: 85/110
+################################################################################
+Phase: 4 | 🚨 Severity: CRITICAL
+Breakdown: ₹2926.53
+🟢 RS: 0.072
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 5.7%
+  • 50 SMA declining (slope: -0.1478)
+  • Elevated volume: 1.3x
+  • RS still positive: 0.07
+FUNDAMENTAL SNAPSHOT - MUTHOOTFIN.NS
+No data available
+
+################################################################################
+🚨 SELL #17: AMBUJACEM.NS | Score: 80/110
+################################################################################
+Phase: 4 | 🚨 Severity: CRITICAL
+Breakdown: ₹410.97
+🟡 RS: -0.166
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 8.9%
+  • 50 SMA declining (slope: -0.1914)
+  • Elevated volume: 1.4x
+  • Weak RS rollover: -0.17
+FUNDAMENTAL SNAPSHOT - AMBUJACEM.NS
+No data available
+
+################################################################################
+🚨 SELL #18: BDL.NS | Score: 80/110
+################################################################################
+Phase: 4 | 🚨 Severity: CRITICAL
+Breakdown: ₹1260.29
+🟡 RS: -0.383
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 11.5%
+  • 50 SMA declining (slope: -0.2493)
+  • Elevated volume: 1.3x
+  • Weak RS rollover: -0.38
+FUNDAMENTAL SNAPSHOT - BDL.NS
+No data available
+
+################################################################################
+🚨 SELL #19: BRITANNIA.NS | Score: 80/110
+################################################################################
+Phase: 4 | 🚨 Severity: CRITICAL
+Breakdown: ₹5264.66
+🟡 RS: -0.089
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 6.6%
+  • 50 SMA declining (slope: -0.0909)
+  • Elevated volume: 1.3x
+  • Weak RS rollover: -0.09
+FUNDAMENTAL SNAPSHOT - BRITANNIA.NS
+No data available
+
+################################################################################
+🚨 SELL #20: FIRSTCRY.NS | Score: 80/110
+################################################################################
+Phase: 4 | 🚨 Severity: CRITICAL
+Breakdown: ₹193.31
+🟢 RS: 0.545
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Below 50 SMA by 4.4%
+  • 50 SMA declining (slope: -0.4287)
+  • High volume breakdown: 5.3x
+  • RS still positive: 0.54
+FUNDAMENTAL SNAPSHOT - FIRSTCRY.NS
+No data available
+
+################################################################################
+🚨 SELL #21: GRSE.NS | Score: 80/110
+################################################################################
+Phase: 4 | 🚨 Severity: CRITICAL
+Breakdown: ₹2521.82
+🟡 RS: -0.411
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 11.0%
+  • 50 SMA declining (slope: -0.2086)
+  • Moderate volume: 1.3x
+  • Weak RS rollover: -0.41
+FUNDAMENTAL SNAPSHOT - GRSE.NS
+No data available
+
+################################################################################
+🚨 SELL #22: INDUSTOWER.NS | Score: 80/110
+################################################################################
+Phase: 4 | 🚨 Severity: CRITICAL
+Breakdown: ₹377.18
+🟢 RS: 0.024
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Below 50 SMA by 4.6%
+  • 50 SMA declining (slope: -0.0087)
+  • Elevated volume: 1.5x
+  • RS still positive: 0.02
+FUNDAMENTAL SNAPSHOT - INDUSTOWER.NS
+No data available
+
+################################################################################
+🚨 SELL #23: MAZDOCK.NS | Score: 80/110
+################################################################################
+Phase: 4 | 🚨 Severity: CRITICAL
+Breakdown: ₹2409.96
+🔴 RS: -0.736
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 11.3%
+  • 50 SMA declining (slope: -0.1218)
+  • Moderate volume: 1.1x
+  • Weak RS rollover: -0.74
+FUNDAMENTAL SNAPSHOT - MAZDOCK.NS
+No data available
+
+################################################################################
+🚨 SELL #24: RECLTD.NS | Score: 80/110
+################################################################################
+Phase: 4 | 🚨 Severity: CRITICAL
+Breakdown: ₹332.82
+🟡 RS: -0.080
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 8.9%
+  • 50 SMA declining (slope: -0.2394)
+  • Elevated volume: 1.4x
+  • Weak RS rollover: -0.08
+FUNDAMENTAL SNAPSHOT - RECLTD.NS
+No data available
+
+################################################################################
+🚨 SELL #25: RELIANCE.NS | Score: 80/110
+################################################################################
+Phase: 4 | 🚨 Severity: CRITICAL
+Breakdown: ₹1286.32
+🟡 RS: -0.286
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 6.9%
+  • 50 SMA declining (slope: -0.0678)
+  • Moderate volume: 1.1x
+  • Weak RS rollover: -0.29
+FUNDAMENTAL SNAPSHOT - RELIANCE.NS
+No data available
+
+################################################################################
+🚨 SELL #26: TIINDIA.NS | Score: 80/110
+################################################################################
+Phase: 4 | 🚨 Severity: CRITICAL
+Breakdown: ₹2739.54
+🟡 RS: -0.296
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 10.2%
+  • 50 SMA declining (slope: -0.2659)
+  • Moderate volume: 1.3x
+  • Weak RS rollover: -0.30
+FUNDAMENTAL SNAPSHOT - TIINDIA.NS
+No data available
+
+################################################################################
+🚨 SELL #27: VOLTAS.NS | Score: 80/110
+################################################################################
+Phase: 4 | 🚨 Severity: CRITICAL
+Breakdown: ₹1225.72
+🟡 RS: -0.147
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 7.4%
+  • 50 SMA declining (slope: -0.2541)
+  • Elevated volume: 1.4x
+  • Weak RS rollover: -0.15
+FUNDAMENTAL SNAPSHOT - VOLTAS.NS
+No data available
+
+################################################################################
+🔴 SELL #28: ADVENZYMES.NS | Score: 75/110
+################################################################################
+Phase: 4 | 🔴 Severity: HIGH
+Breakdown: ₹302.64
+🟡 RS: -0.114
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 6.4%
+  • 50 SMA declining (slope: -0.1853)
+  • Low volume breakdown: 0.9x
+  • Weak RS rollover: -0.11
+FUNDAMENTAL SNAPSHOT - ADVENZYMES.NS
+No data available
+
+################################################################################
+🔴 SELL #29: AFCONS.NS | Score: 75/110
+################################################################################
+Phase: 4 | 🔴 Severity: HIGH
+Breakdown: ₹274.36
+🟡 RS: -0.356
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 8.3%
+  • 50 SMA declining (slope: -0.2731)
+  • Low volume breakdown: 0.3x
+  • Weak RS rollover: -0.36
+FUNDAMENTAL SNAPSHOT - AFCONS.NS
+No data available
+
+################################################################################
+🔴 SELL #30: ARVINDFASN.NS | Score: 75/110
+################################################################################
+Phase: 4 | 🔴 Severity: HIGH
+Breakdown: ₹445.11
+🟡 RS: -0.412
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 7.0%
+  • 50 SMA declining (slope: -0.1454)
+  • Low volume breakdown: 0.5x
+  • Weak RS rollover: -0.41
+FUNDAMENTAL SNAPSHOT - ARVINDFASN.NS
+No data available
+
+================================================================================
+ADDITIONAL SELLS (124 more)
+================================================================================
+
+AWFIS.NS, BEL.NS, BHARTIARTL.NS, BSOFT.NS, COCHINSHIP.NS, CRAMC.NS, DCXINDIA.NS, GMDCLTD.NS, GUJENERGY.NS, HAVELLS.NS
+HDBFS.NS, HEGAM.NS, HEIDELBERG.NS, INFY.NS, INTELLECT.NS, IREDA.NS, KNRCON.NS, KPITTECH.NS, M&M.NS, MAPMYINDIA.NS
+MMTC.NS, ROUTE.NS, SURYAROSNI.NS, TARIL.NS, TATAELXSI.NS, WAAREEENER.NS, WIPRO.NS, AWL.NS, AXISBANK.NS, BALMLAWRIE.NS
+BFUTILITIE.NS, CAMPUS.NS, CANBK.NS, CELLO.NS, DABUR.NS, GATEWAY.NS, ICICIPRULI.NS, INOXGREEN.NS, INOXWIND.NS, IRCON.NS
+IRFC.NS, JAINREC.NS, MEDIASSIST.NS, NAVA.NS, NBCC.NS, NTPC.NS, PFC.NS, PNCINFRA.NS, POWERGRID.NS, PRAJIND.NS
+QUICKHEAL.NS, RAILTEL.NS, SCODATUBES.NS, TATACONSUM.NS, UNIECOM.NS, VEDL.NS, VIPIND.NS, VMM.NS, ABLBL.NS, ACI.NS
+ASHOKLEY.NS, BAJAJELEC.NS, BAJAJHFL.NS, BANKBARODA.NS, BLS.NS, BOMDYEING.NS, BPCL.NS, CAMLINFINE.NS, CESC.NS, CROMPTON.NS
+EPACK.NS, HAPPSTMNDS.NS, HDFCLIFE.NS, HGINFRA.NS, HINDCOPPER.NS, IEX.NS, IOC.NS, IRCTC.NS, ITCHOTELS.NS, JKTYRE.NS
+JWL.NS, KEC.NS, KITEX.NS, KRSNAA.NS, LTM.NS, MOIL.NS, NATCOPHARM.NS, NEWGEN.NS, NLCINDIA.NS, ONGC.NS
+ORIENTCEM.NS, OSWALPUMPS.NS, POKARNA.NS, RESPONIND.NS, SBICARD.NS, SOLARWORLD.NS, SWIGGY.NS, SWSOLAR.NS, TATACHEM.NS, TATAINVEST.NS
+TATAPOWER.NS, TCS.NS, ZAGGLE.NS, AURIONPRO.NS, BIKAJI.NS, CSBBANK.NS, GODREJCP.NS, HDFCBANK.NS, HINDPETRO.NS, HUDCO.NS
+IDBI.NS, JKLAKSHMI.NS, KFINTECH.NS, LUPIN.NS, MOBIKWIK.NS, POCL.NS, PRECAM.NS, RVNL.NS, SAMHI.NS, TCI.NS
+UTIAMC.NS, VIKRAN.NS, WAAREERTL.NS, ZENSARTECH.NS
+
+
+================================================================================
+END OF SCAN
+================================================================================

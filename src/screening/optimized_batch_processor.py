@@ -41,7 +41,8 @@ class OptimizedBatchProcessor:
         max_workers: int = 3,  # Conservative: 3 workers
         rate_limit_delay: float = 0.5,  # 0.5 sec = 2 TPS per worker
         batch_size: int = 100,
-        use_git_storage: bool = False  # Use Git-based fundamental storage
+        use_git_storage: bool = False,  # Use Git-based fundamental storage
+        benchmark_ticker: str = 'SPY'
     ):
         """Initialize optimized processor.
 
@@ -52,12 +53,15 @@ class OptimizedBatchProcessor:
             rate_limit_delay: Delay per worker (0.5 = 2 TPS)
             batch_size: Save progress frequency
             use_git_storage: Use Git-based storage for fundamentals (recommended)
+            benchmark_ticker: Yahoo Finance symbol used as the market benchmark
+            results_dir: Directory for progress and intermediate results
         """
         self.fetcher = YahooFinanceFetcher(cache_dir=cache_dir)
         self.git_fetcher = GitStorageFetcher() if use_git_storage else None
         self.use_git_storage = use_git_storage
         self.results_dir = Path(results_dir)
         self.results_dir.mkdir(parents=True, exist_ok=True)
+        self.benchmark_ticker = benchmark_ticker
 
         self.max_workers = max_workers
         self.rate_limit_delay = rate_limit_delay
@@ -151,18 +155,18 @@ class OptimizedBatchProcessor:
             self.last_request_time = time.time()
 
     def fetch_spy_data(self) -> bool:
-        """Fetch SPY benchmark data."""
+        """Fetch benchmark data for the selected market."""
         try:
-            logger.info("Fetching SPY data...")
+            logger.info("Fetching %s benchmark data...", self.benchmark_ticker)
             # Use 1 year for price data (not 2 years - 50% less data)
             # Use same fetcher as stocks for consistency
             if self.use_git_storage and self.git_fetcher:
-                spy_hist = self.git_fetcher.fetch_price_fresh('SPY')
+                spy_hist = self.git_fetcher.fetch_price_fresh(self.benchmark_ticker)
             else:
-                spy_hist = self.fetcher.fetch_price_history('SPY', period='1y')
+                spy_hist = self.fetcher.fetch_price_history(self.benchmark_ticker, period='1y')
 
             if spy_hist.empty:
-                logger.error("Failed to fetch SPY data")
+                logger.error("Failed to fetch %s data", self.benchmark_ticker)
                 return False
 
             # Ensure DatetimeIndex (yfinance should return this, but verify)
@@ -173,7 +177,7 @@ class OptimizedBatchProcessor:
 
             self.spy_data = spy_hist
             self.spy_price = spy_hist['Close'].iloc[-1]
-            logger.info(f"SPY ready: {len(spy_hist)} days, ${self.spy_price:.2f}")
+            logger.info("%s ready: %s days, %s", self.benchmark_ticker, len(spy_hist), self.spy_price)
             return True
 
         except Exception as e:

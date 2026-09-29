@@ -6,6 +6,7 @@ and maintains a daily-updated universe for screening.
 
 import logging
 import pickle
+from io import BytesIO
 from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Dict, List, Set
@@ -220,3 +221,64 @@ class USStockUniverseFetcher:
             'cache_age_hours': cache_age.total_seconds() / 3600,
             'metadata': cached_data.get('metadata', {})
         }
+
+
+class NSEStockUniverseFetcher:
+    """Fetch active NSE equity symbols and format them for Yahoo Finance."""
+
+    UNIVERSE_URL = "https://archives.nseindia.com/content/equities/EQUITY_L.csv"
+
+    def __init__(self, cache_dir: str = "./data/cache"):
+        self.cache_dir = Path(cache_dir)
+        self.cache_dir.mkdir(parents=True, exist_ok=True)
+        self.cache_file = self.cache_dir / "nse_stock_universe.pkl"
+
+    def fetch_universe(self, force_refresh: bool = False) -> List[str]:
+        if not force_refresh and self.cache_file.exists():
+            cache_age = datetime.now() - datetime.fromtimestamp(self.cache_file.stat().st_mtime)
+            if cache_age < timedelta(days=1):
+                with open(self.cache_file, 'rb') as cache_file:
+                    return pickle.load(cache_file)['symbols']
+
+        response = requests.get(
+            self.UNIVERSE_URL,
+            headers={'User-Agent': 'Mozilla/5.0 stock-screener/1.0'},
+            timeout=30
+        )
+        response.raise_for_status()
+        stocks = pd.read_csv(BytesIO(response.content))
+        required_columns = {'SYMBOL', 'NAME OF COMPANY', 'SERIES'}
+        missing_columns = required_columns - set(stocks.columns)
+        if missing_columns:
+            raise ValueError(f"NSE listing is missing columns: {sorted(missing_columns)}")
+
+        stocks = stocks[stocks['SERIES'].astype(str).str.strip().eq('EQ')].copy()
+        stocks['SYMBOL'] = stocks['SYMBOL'].astype(str).str.strip().str.upper()
+        name_upper = stocks['NAME OF COMPANY'].fillna('').astype(str).str.upper()
+        fund_keywords = ('ETF', 'FUND', 'TRUST', 'INDEX', 'PORTFOLIO', 'BOND', 'TREASURY')
+        is_fund = name_upper.str.contains('|'.join(fund_keywords), regex=True)
+        stocks = stocks[~is_fund & stocks['SYMBOL'].str.fullmatch(r'[A-Z0-9&_-]+')]
+
+        symbols = sorted(set(f"{symbol}.NS" for symbol in stocks['SYMBOL']))
+        if not symbols:
+            raise ValueError("NSE listing returned no eligible EQ symbols")
+
+        cache_data = {
+            'symbols': symbols,
+            'fetch_date': datetime.now().isoformat(),
+            'count': len(symbols)
+        }
+        with open(self.cache_file, 'wb') as cache_file:
+            pickle.dump(cache_data, cache_file)
+
+        logger.info("Cached %s NSE equity symbols", len(symbols))
+        return symbols
+
+
+def get_stock_universe_fetcher(market: str, cache_dir: str = "./data/cache"):
+    """Create the universe fetcher for a supported market."""
+    if market == 'us':
+        return USStockUniverseFetcher(cache_dir=cache_dir)
+    if market == 'india':
+        return NSEStockUniverseFetcher(cache_dir=cache_dir)
+    raise ValueError(f"Unsupported market: {market}")

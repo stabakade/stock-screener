@@ -17,8 +17,12 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-def analyze_spy_trend(spy_price_data: pd.DataFrame, current_spy_price: float) -> Dict[str, any]:
-    """Analyze SPY trend using Phase classification.
+def analyze_spy_trend(
+    spy_price_data: pd.DataFrame,
+    current_spy_price: float,
+    benchmark_ticker: str = 'SPY'
+) -> Dict[str, any]:
+    """Analyze the selected market benchmark using Phase classification.
 
     Args:
         spy_price_data: SPY OHLCV data
@@ -53,7 +57,8 @@ def analyze_spy_trend(spy_price_data: pd.DataFrame, current_spy_price: float) ->
         trend = 'Unknown'
 
     return {
-        'ticker': 'SPY',
+        'ticker': benchmark_ticker,
+        'benchmark_ticker': benchmark_ticker,
         'phase': phase,
         'phase_name': phase_info['phase_name'],
         'trend': trend,
@@ -190,18 +195,21 @@ def format_benchmark_summary(spy_analysis: Dict, breadth: Dict) -> str:
     else:
         phase_emoji = "🔴"  # Downtrend
 
-    summary += f"{phase_emoji} SPY Trend Classification:\n"
+    benchmark_ticker = spy_analysis.get('benchmark_ticker', 'SPY')
+    benchmark_name = 'NIFTY 50' if benchmark_ticker == '^NSEI' else benchmark_ticker
+    currency = '₹' if benchmark_ticker == '^NSEI' else '$'
+    summary += f"{phase_emoji} {benchmark_name} Trend Classification:\n"
     summary += f"  Phase: {spy_analysis['phase']} - {spy_analysis['phase_name']}\n"
     summary += f"  Trend: {spy_analysis['trend']}\n"
-    summary += f"  Current Price: ${spy_analysis.get('current_price', 0):.2f}\n"
+    summary += f"  Current Price: {currency}{spy_analysis.get('current_price', 0):.2f}\n"
 
     slope_50 = spy_analysis.get('slope_50', 0)
     slope_50_emoji = "🟢" if slope_50 > 0 else "🔴"
-    summary += f"  {slope_50_emoji} 50 SMA: ${spy_analysis.get('sma_50', 0):.2f} (slope: {slope_50:.4f})\n"
+    summary += f"  {slope_50_emoji} 50 SMA: {currency}{spy_analysis.get('sma_50', 0):.2f} (slope: {slope_50:.4f})\n"
 
     slope_200 = spy_analysis.get('slope_200', 0)
     slope_200_emoji = "🟢" if slope_200 > 0 else "🔴"
-    summary += f"  {slope_200_emoji} 200 SMA: ${spy_analysis.get('sma_200', 0):.2f} (slope: {slope_200:.4f})\n"
+    summary += f"  {slope_200_emoji} 200 SMA: {currency}{spy_analysis.get('sma_200', 0):.2f} (slope: {slope_200:.4f})\n"
 
     confidence = spy_analysis.get('confidence', 0)
     if confidence >= 80:

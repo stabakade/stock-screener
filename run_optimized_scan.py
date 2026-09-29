@@ -22,7 +22,7 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
-from src.data.universe_fetcher import USStockUniverseFetcher
+from src.data.universe_fetcher import get_stock_universe_fetcher
 from src.screening.optimized_batch_processor import OptimizedBatchProcessor
 from src.screening.benchmark import (
     analyze_spy_trend,
@@ -40,16 +40,18 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-def save_report(results, buy_signals, sell_signals, spy_analysis, breadth, output_dir="./data/daily_scans"):
+def save_report(results, buy_signals, sell_signals, spy_analysis, breadth, market='us', output_dir="./data/daily_scans"):
     """Save comprehensive report."""
     Path(output_dir).mkdir(parents=True, exist_ok=True)
+    currency = '₹' if market == 'india' else '$'
 
     timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
     date_str = datetime.now().strftime('%Y-%m-%d')
 
     output = []
     output.append("="*80)
-    output.append("OPTIMIZED FULL MARKET SCAN - ALL US STOCKS")
+    market_name = 'NSE India' if market == 'india' else 'US'
+    output.append(f"OPTIMIZED FULL MARKET SCAN - {market_name} STOCKS")
     output.append(f"Scan Date: {date_str}")
     output.append(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     output.append("="*80)
@@ -123,7 +125,7 @@ def save_report(results, buy_signals, sell_signals, spy_analysis, breadth, outpu
 
             # CRITICAL: Stop loss and R/R ratio
             if signal.get('stop_loss'):
-                output.append(f"Stop Loss: ${signal['stop_loss']:.2f}")
+                output.append(f"Stop Loss: {currency}{signal['stop_loss']:.2f}")
                 details = signal.get('details', {})
                 risk_amt = details.get('risk_amount', 0)
                 reward_amt = details.get('reward_amount', 0)
@@ -135,10 +137,10 @@ def save_report(results, buy_signals, sell_signals, spy_analysis, breadth, outpu
                     rr_emoji = "🟢"  # Good R/R
                 else:
                     rr_emoji = "🟡"  # Poor R/R
-                output.append(f"{rr_emoji} Risk/Reward: {rr_ratio:.1f}:1 (Risk ${risk_amt:.2f}, Reward ${reward_amt:.2f})")
+                output.append(f"{rr_emoji} Risk/Reward: {rr_ratio:.1f}:1 (Risk {currency}{risk_amt:.2f}, Reward {currency}{reward_amt:.2f})")
 
             if signal.get('breakout_price'):
-                output.append(f"Breakout: ${signal['breakout_price']:.2f}")
+                output.append(f"Breakout: {currency}{signal['breakout_price']:.2f}")
 
             details = signal.get('details', {})
             if 'rs_slope' in details:
@@ -183,10 +185,13 @@ def save_report(results, buy_signals, sell_signals, spy_analysis, breadth, outpu
 
             output.append("\nKey Reasons:")
             for reason in signal['reasons'][:7]:  # Show 7 instead of 5
+                if market == 'india':
+                    reason = reason.replace('$', currency)
                 output.append(f"  • {reason}")
 
             if signal.get('fundamental_snapshot'):
-                output.append(signal['fundamental_snapshot'])
+                snapshot = signal['fundamental_snapshot']
+                output.append(snapshot.replace('$', currency) if market == 'india' else snapshot)
 
         if len(buy_signals) > 50:
             output.append(f"\n{'='*80}")
@@ -230,7 +235,7 @@ def save_report(results, buy_signals, sell_signals, spy_analysis, breadth, outpu
             output.append(f"{'#'*80}")
             output.append(f"Phase: {signal['phase']} | {severity_emoji} Severity: {severity.upper()}")
             if signal.get('breakdown_level'):
-                output.append(f"Breakdown: ${signal['breakdown_level']:.2f}")
+                output.append(f"Breakdown: {currency}{signal['breakdown_level']:.2f}")
             details = signal.get('details', {})
             if 'rs_slope' in details:
                 rs_slope = details['rs_slope']
@@ -266,11 +271,12 @@ def save_report(results, buy_signals, sell_signals, spy_analysis, breadth, outpu
     report_text = "\n".join(output)
 
     # Save
-    filepath = Path(output_dir) / f"optimized_scan_{timestamp}.txt"
+    market_suffix = '_india' if market == 'india' else ''
+    filepath = Path(output_dir) / f"optimized_scan{market_suffix}_{timestamp}.txt"
     with open(filepath, 'w') as f:
         f.write(report_text)
 
-    latest_path = Path(output_dir) / "latest_optimized_scan.txt"
+    latest_path = Path(output_dir) / f"latest_optimized_scan{market_suffix}.txt"
     with open(latest_path, 'w') as f:
         f.write(report_text)
 
@@ -282,6 +288,7 @@ def save_report(results, buy_signals, sell_signals, spy_analysis, breadth, outpu
 
 def main():
     parser = argparse.ArgumentParser(description='Optimized Full Market Scanner')
+    parser.add_argument('--market', choices=('us', 'india'), default='us', help='Market to scan (default: us)')
     parser.add_argument('--workers', type=int, default=3, help='Parallel workers (default: 3)')
     parser.add_argument('--delay', type=float, default=0.5, help='Delay per worker (default: 0.5s)')
     parser.add_argument('--conservative', action='store_true', help='Ultra-conservative mode (2 workers, 1.0s delay)')
@@ -289,7 +296,7 @@ def main():
     parser.add_argument('--resume', action='store_true', help='Resume from progress')
     parser.add_argument('--clear-progress', action='store_true', help='Clear progress')
     parser.add_argument('--test-mode', action='store_true', help='Test with 100 stocks')
-    parser.add_argument('--min-price', type=float, default=5.0, help='Min price')
+    parser.add_argument('--min-price', type=float, default=None, help='Minimum price (default: 5 USD or 50 INR)')
     parser.add_argument('--min-volume', type=int, default=100000, help='Min volume')
     parser.add_argument('--use-fmp', action='store_true', help='Use FMP for enhanced fundamentals on buy signals')
     parser.add_argument('--git-storage', action='store_true', help='Use Git-based storage for fundamentals (recommended)')
@@ -317,8 +324,8 @@ def main():
         logger.warning("--use-fmp specified but FMP_API_KEY not set. Using yfinance only.")
 
     try:
-        # Fetch universe
-        universe_fetcher = USStockUniverseFetcher()
+        # Fetch the selected market universe and benchmark.
+        universe_fetcher = get_stock_universe_fetcher(args.market)
         logger.info("Fetching stock universe...")
         tickers = universe_fetcher.fetch_universe()
 
@@ -328,6 +335,10 @@ def main():
 
         logger.info(f"Universe: {len(tickers):,} stocks")
 
+        benchmark_ticker = '^NSEI' if args.market == 'india' else 'SPY'
+        min_price = args.min_price if args.min_price is not None else (50.0 if args.market == 'india' else 5.0)
+        results_dir = './data/batch_results/india' if args.market == 'india' else './data/batch_results'
+
         if args.test_mode:
             tickers = tickers[:100]
             logger.info(f"TEST MODE: {len(tickers)} stocks")
@@ -336,7 +347,9 @@ def main():
         processor = OptimizedBatchProcessor(
             max_workers=args.workers,
             rate_limit_delay=args.delay,
-            use_git_storage=args.git_storage
+            use_git_storage=args.git_storage,
+            benchmark_ticker=benchmark_ticker,
+            results_dir=results_dir
         )
 
         if args.git_storage:
@@ -349,7 +362,7 @@ def main():
         results = processor.process_batch_parallel(
             tickers,
             resume=args.resume,
-            min_price=args.min_price,
+            min_price=min_price,
             min_volume=args.min_volume
         )
 
@@ -359,7 +372,11 @@ def main():
 
         # Analysis
         logger.info("Generating signals...")
-        spy_analysis = analyze_spy_trend(processor.spy_data, processor.spy_price)
+        spy_analysis = analyze_spy_trend(
+            processor.spy_data,
+            processor.spy_price,
+            benchmark_ticker=benchmark_ticker
+        )
         breadth = calculate_market_breadth(results['phase_results'])
         signal_rec = should_generate_signals(spy_analysis, breadth)
 
@@ -413,7 +430,7 @@ def main():
         sell_signals = sorted(sell_signals, key=lambda x: x['score'], reverse=True)
 
         # Report
-        save_report(results, buy_signals, sell_signals, spy_analysis, breadth)
+        save_report(results, buy_signals, sell_signals, spy_analysis, breadth, market=args.market)
 
         # Show FMP usage if enabled
         if args.use_fmp:

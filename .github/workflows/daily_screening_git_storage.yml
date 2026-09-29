@@ -8,6 +8,14 @@ on:
   # Allow manual triggering
   workflow_dispatch:
     inputs:
+      market:
+        description: 'Market to scan'
+        required: true
+        type: choice
+        options:
+          - us
+          - india
+        default: us
       force_full_refresh:
         description: 'Force refresh all fundamentals (ignore cache)'
         required: false
@@ -67,6 +75,7 @@ jobs:
 
       - name: Run optimized stock screening
         env:
+          MARKET: ${{ github.event.inputs.market || 'us' }}
           EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
           EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
           EMAIL_TO: ${{ secrets.EMAIL_TO }}
@@ -87,7 +96,7 @@ jobs:
 
           # Conservative mode to avoid rate limits
           # --git-storage flag enables Git-based fundamental storage
-          python run_optimized_scan.py --conservative --git-storage
+          python run_optimized_scan.py --market "$MARKET" --conservative --git-storage
 
       - name: Show fundamental refresh stats
         if: always()

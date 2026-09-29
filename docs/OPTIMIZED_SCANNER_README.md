@@ -119,6 +119,20 @@ python run_optimized_scan.py --min-price 10 --min-volume 500000
 python run_optimized_scan.py --resume
 ```
 
+## Indian Market (NSE)
+
+The scanner can fetch NSE cash-market equities from the official NSE listing and uses Yahoo Finance `.NS` symbols and the NIFTY 50 (`^NSEI`) as its benchmark. The universe includes NSE `EQ` series symbols; BSE-only listings are not included.
+
+Run locally:
+
+```bash
+python run_optimized_scan.py --market india --conservative --git-storage
+```
+
+The India run defaults to a ₹50 minimum share price and 100,000 average daily shares. Use `--test-mode` to limit a run to the first 100 symbols. India progress/cache files and report names are kept separate from US runs; the latest India report is `data/daily_scans/latest_optimized_scan_india.txt`.
+
+To run it in GitHub Actions, open **Actions** → **Daily Stock Screening (Git-Based Storage)** → **Run workflow**, then choose `india` under **Market to scan**. Scheduled runs continue to scan the US market.
+
 ## Command Line Options
 
 ```bash
